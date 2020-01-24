@@ -11,6 +11,6 @@ server.use(helmet());
 server.use(morgan('tiny'));
 server.use(cors());
 
-server.use('/api/users', UsersRouter);
+server.use('/api', UsersRouter);
 
 module.exports = server;
