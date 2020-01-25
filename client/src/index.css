@@ -6,23 +6,29 @@
   padding: 0;
 }
 
-body {
+html, body {
   margin: 0;
+  padding: 0;
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: url('./images/forest.jpg');
   background-size: cover;
   background-repeat: none;
+  height: 100%;
 }
 
-h1, h2, h3, h4, a {
+h1, h2, h3, h4 {
   font-family: 'Bellefair', serif;
 }
 
 a {
-  margin: 1rem;
   color: green;
   text-decoration: none;
+}
+
+header a {
+  margin: 1rem;
   padding: 1rem;
+  font-family: 'Bellefair', serif;
 }

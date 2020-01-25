@@ -53,21 +53,32 @@ function App() {
           <Link to='/home'>Home</Link>
         </nav>
       </header>
-      <Route exact path='/' component={Home} />
 
-      <Route path='/register' render={props => <Register {...props} 
-        registerUser={registerUser} 
-        isRegistered={isRegistered} 
-        username={user.username} />} />
+      <div className='main-content'>
+        
+        <Route exact path='/' component={Home} />
 
-      <Route path='/login' render={props => <Login {...props} 
-        loginUser={loginUser}
-        isLoggedIn={isLoggedIn}
-        username={user.username} />} />
+        <Route path='/register' render={props => <Register {...props} 
+          registerUser={registerUser} 
+          isRegistered={isRegistered} 
+          username={user.username} />} />
 
-      <Route path='/users' render={props => <Users {...props}
-        user={user}
-        isLoggedIn={isLoggedIn} />} />
+        <Route path='/login' render={props => <Login {...props} 
+          loginUser={loginUser}
+          isLoggedIn={isLoggedIn}
+          username={user.username} />} />
+
+        <Route path='/users' render={props => <Users {...props}
+          user={user}
+          isLoggedIn={isLoggedIn} />} />
+
+      </div>
+
+      <footer>
+        <p> © 2020 Heather Nuffer</p>
+        <p>Animal icons are from <a href='https://www.stockio.com/free-icon/fox'>stockio.com</a></p>
+      </footer>
+
     </div>
   );
 }

@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  min-height: 100%;
+  position: relative;
 }
 
 .App-logo {
@@ -32,6 +34,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.main-content {
+  padding: 1rem;
+  padding-bottom: 5rem;
+  min-height: 40vh;
 }
 
 form {
@@ -130,4 +138,20 @@ form input[placeholder] {
 
 img {
   max-width: 100%;
+}
+
+
+/* Footer styles */
+footer {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  padding: 2rem;
+  color: white;
+  position: absolute;
+  height: 6rem;
+  bottom: -40vh;
+  width: 100%;
 }
