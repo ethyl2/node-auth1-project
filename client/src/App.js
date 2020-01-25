@@ -12,6 +12,7 @@ import Login from './components/Login';
 function App() {
   const [user, setUser ] = useState({username: '', password: ''});
   const [isRegistered, setIsRegistered] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const registerUser = user => {
     axios.post('http://localhost:9000/api/register', user)
@@ -19,6 +20,19 @@ function App() {
         console.log(response)
         setUser(response.data);
         setIsRegistered(true);
+        setIsLoggedIn(true);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  const loginUser = user => {
+    axios.post('http://localhost:9000/api/login', user)
+      .then(response => {
+        console.log(response)
+        setUser(user);
+        setIsLoggedIn(true);
       })
       .catch(err => {
         console.log(err);
@@ -41,13 +55,19 @@ function App() {
       </header>
       <Route exact path='/' component={Home} />
 
-      <Route path='/register' render={props => <Register {...props} registerUser={registerUser} 
+      <Route path='/register' render={props => <Register {...props} 
+        registerUser={registerUser} 
         isRegistered={isRegistered} 
-        username={user.username}/>} />
+        username={user.username} />} />
 
-      <Route path='/login' render={props => <Login {...props} setUser={setUser} />} />
+      <Route path='/login' render={props => <Login {...props} 
+        loginUser={loginUser}
+        isLoggedIn={isLoggedIn}
+        username={user.username} />} />
 
-      <Route path='/users' component={Users} />
+      <Route path='/users' render={props => <Users {...props}
+        user={user}
+        isLoggedIn={isLoggedIn} />} />
     </div>
   );
 }

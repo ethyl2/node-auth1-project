@@ -29,6 +29,6 @@ function findUserByUsername(submitted_username) {
 
 function findUsers() {
     return db('users')
-        .select('users.username');
+        .select('users.id', 'users.username');
 }
 
