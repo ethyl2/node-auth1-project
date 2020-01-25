@@ -4,7 +4,7 @@ const Register = props => {
     const [userInput, setUserInput] = useState({username: '', password: ''});
 
     const handleChange = e => {
-        setUserInput({[e.target.name]: e.target.value});
+        setUserInput({...userInput, [e.target.name]: e.target.value});
     }
 
     const handleSubmit = e => {
@@ -14,6 +14,7 @@ const Register = props => {
 
     return (
         <div>
+            {!props.isRegistered && 
             <form onSubmit={handleSubmit}>
                 <legend>Sign Up to Become a Forest Friend</legend>
 
@@ -39,6 +40,9 @@ const Register = props => {
 
 
             </form>
+            }
+
+            {props.isRegistered && <h2 className='welcome'>Welcome, {props.username}!</h2>}
         </div>
     )
 }

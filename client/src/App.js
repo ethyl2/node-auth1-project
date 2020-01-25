@@ -11,10 +11,19 @@ import Login from './components/Login';
 
 function App() {
   const [user, setUser ] = useState({username: '', password: ''});
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const registerUser = user => {
-    console.log('time to register user')
-  }
+    axios.post('http://localhost:9000/api/register', user)
+      .then(response => {
+        console.log(response)
+        setUser(response.data);
+        setIsRegistered(true);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="App">
@@ -31,8 +40,13 @@ function App() {
         </nav>
       </header>
       <Route exact path='/' component={Home} />
-      <Route path='/register' render={props => <Register {...props} registerUser={registerUser} />} />
+
+      <Route path='/register' render={props => <Register {...props} registerUser={registerUser} 
+        isRegistered={isRegistered} 
+        username={user.username}/>} />
+
       <Route path='/login' render={props => <Login {...props} setUser={setUser} />} />
+
       <Route path='/users' component={Users} />
     </div>
   );
