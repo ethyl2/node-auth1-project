@@ -16,4 +16,21 @@ router.post('/register', (req, res) => {
         });
 });
 
+router.post('/login', (req, res) => {
+    let { username, password } = req.body;
+    Users.findUserByUsername(username)
+        .then(user => {
+            if (user && bcrypt.compareSync(password, user.password)) {
+                //TODO: create a new session for the user
+                //TODO: send cookie that contains the user id
+                res.status(200).json({message: 'Logged in successfully', user_id: user.id})
+            } else {
+                res.status(401).json({message: 'Invalid credentials'})
+            }
+        })
+        .catch(err => {
+            res.status(500).json({error: err, message: 'Failure to log in'})
+        });
+});
+
 module.exports = router;
