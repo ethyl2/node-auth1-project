@@ -20,7 +20,6 @@ function App() {
         console.log(response)
         setUser(response.data);
         setIsRegistered(true);
-        setIsLoggedIn(true);
       })
       .catch(err => {
         console.log(err);
@@ -55,7 +54,7 @@ function App() {
       </header>
 
       <div className='main-content'>
-        
+
         <Route exact path='/' component={Home} />
 
         <Route path='/register' render={props => <Register {...props} 
