@@ -10,8 +10,9 @@ import owl from '../images/animals/owl.svg';
 import rabbit from '../images/animals/rabbit.svg';
 import racoon from '../images/animals/racoon.svg';
 import snake from '../images/animals/snake.svg';
+import moose from '../images/animals/moose.svg';
 
-const animals = [beaver, bear, fox, frog, hedgehog, mouse, owl, rabbit, racoon, snake];
+const animals = [beaver, bear, fox, frog, hedgehog, mouse, owl, rabbit, racoon, snake, moose];
 
 const Users = props => {
     const [users, setUsers] = useState(null);
