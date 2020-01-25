@@ -22,10 +22,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
+  padding-bottom: 1rem;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +32,60 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+form {
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Bellefair', serif;
+}
+
+form legend {
+  font-size: 3rem;
+}
+
+form label {
+  font-size: 1.5rem;
+  text-align: left;
+  padding-top: 1rem;
+  width: 80%;
+}
+
+form input {
+  background: rgba(198,200,70, 0.2);
+  border: none;
+  border-bottom: 0.2rem solid green;
+  line-height: 2rem;
+  width: 80%;
+}
+
+form button {
+  margin-top: 1rem;
+  font-family: 'Bellefair', serif;
+  font-size: 1.5rem;
+  outline: none;
+  border: 0.2rem solid green;
+  border-radius: 0.5rem;
+  background: rgba(198,200,70, 0.2);
+  padding: 0.3rem;
+  transition: all 0.2 ease-in-out;
+}
+
+form button:hover {
+  background: rgba(198,200,70, 0.8);
+  transform: scale(1.1);
+}
+
+form button:active {
+  transform: translateY(0.5rem);
+}
+
+form input[placeholder] {
+  padding-left: 0.5rem;
 }

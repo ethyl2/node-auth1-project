@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Bellefair|Montserrat&display=swap');
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -18,4 +24,5 @@ a {
   margin: 1rem;
   color: green;
   text-decoration: none;
+  padding: 1rem;
 }
