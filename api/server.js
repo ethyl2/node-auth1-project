@@ -13,7 +13,7 @@ const sessionConfig = {
         httpOnly: true
     },
     resave: false,
-    saveUninitialized: true //change to false for production
+    saveUninitialized: false //change to false for production
 };
 
 const UsersRouter = require('../users/users-router.js');

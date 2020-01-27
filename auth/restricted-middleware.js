@@ -25,9 +25,13 @@ module.exports = function restricted(req, res, next) {
     */
 
     //Day 2 uses the cookie instead:
-   if (req.session && req.session.user) {
+   if (req.session && req.session.id) {
        next();
+   } else if (!req.session) {
+       console.log('no session found');
+       res.status(401).json({message: 'no session found'});
    } else {
+       console.log('session is invalid');
        res.status(401).json({message: 'session is invalid'});
    }
 }

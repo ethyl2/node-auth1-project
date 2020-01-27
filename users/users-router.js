@@ -38,6 +38,7 @@ router.post('/login', (req, res) => {
                 //For 2nd day: create a new session for the user
                 // and send cookie that contains the user id
                 req.session.user = user;
+                //console.log(req.session.user);
                 
                 res.status(200).json({message: 'Logged in successfully', user_id: user.id})
             } else {
