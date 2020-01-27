@@ -17,6 +17,7 @@ const sessionConfig = {
 };
 
 const UsersRouter = require('../users/users-router.js');
+const ContextsRouter = require('../contexts/contexts-router.js');
 
 const server = express();
 
@@ -25,6 +26,8 @@ server.use(express.json());
 server.use(helmet());
 server.use(morgan('tiny'));
 server.use(cors());
+
+server.use('/api/contexts' , ContextsRouter);
 
 server.use('/api', UsersRouter);
 
