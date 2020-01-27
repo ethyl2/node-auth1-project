@@ -3,7 +3,9 @@ const bcrypt = require('bcryptjs');
 
 
 module.exports = function restricted(req, res, next) {
+    //For day 1,
     //Client must put username and password in headers
+    /*
     const { username, password } = req.headers;
     if (username && password) {
         Users.findUserByUsername(username)
@@ -20,4 +22,10 @@ module.exports = function restricted(req, res, next) {
     } else {
         res.status(400).json({message: 'Please provide valid credentials'});
     }
+    */
+   if (req.session && req.session.user) {
+       next();
+   } else {
+       res.status(401).json({message: 'session is invalid'});
+   }
 }
