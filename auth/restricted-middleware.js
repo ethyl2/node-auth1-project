@@ -23,6 +23,8 @@ module.exports = function restricted(req, res, next) {
         res.status(400).json({message: 'Please provide valid credentials'});
     }
     */
+
+    //Day 2 uses the cookie instead:
    if (req.session && req.session.user) {
        next();
    } else {
