@@ -38,6 +38,16 @@ function App() {
       });
   };
 
+  const logoutUser = () => {
+    axios.get('http://localhost:9000/api/logout')
+      .then(response => {
+        setIsLoggedIn(false);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -47,9 +57,10 @@ function App() {
         </h1>
         <nav>
           <Link to='/register'>Register</Link>
-          <Link to='/login'>Login</Link>
+          {!isLoggedIn && <Link to='/login'>Login</Link>}
           <Link to='/users'>Friends</Link>
           <Link to='/home'>Home</Link>
+          {isLoggedIn && <button className='logout' onClick={logoutUser}>Logout</button>}
         </nav>
       </header>
 

@@ -22,13 +22,19 @@ h1, h2, h3, h4 {
   font-family: 'Bellefair', serif;
 }
 
-a {
+a, .logout {
   color: green;
   text-decoration: none;
 }
 
-header a {
+header a, .logout {
   margin: 1rem;
   padding: 1rem;
   font-family: 'Bellefair', serif;
+}
+
+.logout {
+  background: none;
+  border: none;
+  font-size: 1.75rem;
 }
