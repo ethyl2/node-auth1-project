@@ -64,4 +64,16 @@ router.get('/logout', (req, res) => {
     }
 });
 
+router.get('/users/:id/contexts', restricted, (req, res) => {
+    Users.findUsersContexts(req.params.id)
+        .then(response => {
+            console.log(response);
+            res.status(200).json(response);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({error: err, message: `Unable to retrieve contexts for user ${req.params.id}`});
+        });
+});
+
 module.exports = router;

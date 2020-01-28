@@ -2,7 +2,8 @@ module.exports = {
     addUser,
     findUserById,
     findUserByUsername,
-    findUsers
+    findUsers,
+    findUsersContexts
 }
 
 const db = require('../data/db-config.js');
@@ -30,5 +31,13 @@ function findUserByUsername(submitted_username) {
 function findUsers() {
     return db('users')
         .select('users.id', 'users.username');
+}
+
+function findUsersContexts(user_id) {
+    return db('user-context')
+        .join('users', 'users.id', 'user-context.user_id')
+        .join('contexts', 'contexts.id', 'user-context.context_id')
+        .where({'user-context.user_id': user_id})
+        .select('users.username', 'contexts.name')
 }
 
