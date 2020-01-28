@@ -3,6 +3,9 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const session = require('express-session');
+const knexSessionStore = require('connect-session-knex')(session);
+
+const dbConnection = require('../data/db-config.js')
 
 const sessionConfig = {
     name: "donkey",
@@ -13,7 +16,14 @@ const sessionConfig = {
         httpOnly: true
     },
     resave: false,
-    saveUninitialized: false //change to false for production
+    saveUninitialized: false, //change to false for production,
+    store: new knexSessionStore({
+        knex: dbConnection,
+        tablename: 'sessions',
+        sidfieldname: 'sid',
+        createTable: true,
+        clearInterval: 60000
+    })
 };
 
 const UsersRouter = require('../users/users-router.js');
